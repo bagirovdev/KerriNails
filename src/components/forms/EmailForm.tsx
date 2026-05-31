@@ -22,11 +22,11 @@ function EmailForm({ onClose }) {
 						placeholder='Телефон'
 						className='border p-3 w-full rounded mb-4'
 					/>
-					<input
-						type='tel'
-						placeholder='Телефон'
-						className='border p-3 w-full rounded mb-4'
-					/>
+					<select name='выберите услугу' id=''>
+						<option value='маникюр'>маникюр</option>
+						<option value='педекюр'>педекюр</option>
+						<option value='блаблабла '>бла бла бла</option>
+					</select>
 					<button
 						type='submit'
 						className='bg-blue-500 text-white px-4 py-2 rounded w-full'
