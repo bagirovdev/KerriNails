@@ -12,6 +12,7 @@ import './index.css'
 import Prices from './pages/Prices/Prices'
 import LandingPage from './pages/Landing/LandingPage'
 import Layout from './components/Layout/Layout'
+import ServiceDetail from './pages/Services/ServiceDetail'
 
 function App() {
 	return (
@@ -36,6 +37,7 @@ function App() {
 								</Layout>
 							}
 						/>
+						<Route path='/service/:serviceId' element={<ServiceDetail />} />
 						<Route
 							path='/portfolio'
 							element={
