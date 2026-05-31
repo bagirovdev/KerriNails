@@ -1,24 +1,18 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-
-interface BenefitItem {
-	text: string
-}
 
 const NotFoundPage = () => {
 	const { t } = useTranslation()
 
-	// Явно задаём тип для benefits. Предполагаем, что это массив строк.
-	// Если в переводах используется объект с полем text, скорректируйте тип и логику ниже.
-	const benefits: string[] | string = t('notFound.benefits', {
-		returnObjects: true,
-	})
-
-	// Проверяем, что benefits — это массив, если нет — создаём массив с одним элементом
+	// Приводим тип возвращаемого значения к string[] или пустой массив при ошибке
+	const benefits = t('notFound.benefits', { returnObjects: true }) as
+		| string[]
+		| string
 	const benefitsArray: string[] = Array.isArray(benefits)
 		? benefits
-		: [benefits]
+		: benefits
+			? [benefits]
+			: []
 
 	return (
 		<div className='min-h-screen bg-gradient-to-r from-pink-50 to-purple-100 flex flex-col items-center justify-center px-4 py-8'>
