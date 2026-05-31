@@ -87,7 +87,7 @@ const services = [
 ]
 
 const Prices = () => {
-	const [visibleItems, setVisibleItems] = useState([])
+	const [visibleItems, setVisibleItems] = useState<number[]>([])
 
 	useEffect(() => {
 		services.forEach((_, index) => {
