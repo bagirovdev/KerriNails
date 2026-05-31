@@ -1,9 +1,21 @@
 import { useParams } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
 import logo from '../../assets/nails.jpg'
 import sPokritiem from '../../assets/sPokritiem.jpg'
 
-const servicesData = [
+// Определяем интерфейс для данных услуги
+interface Service {
+	id: number
+	img: string
+	alt: string
+	title: string
+	description: string
+	price: string
+	details: string
+	pricesButton: string
+	aboutButton: string
+}
+
+const servicesData: Service[] = [
 	{
 		id: 1,
 		img: sPokritiem,
@@ -33,9 +45,11 @@ const servicesData = [
 ]
 
 function ServiceDetail() {
-	const { serviceId } = useParams()
-	const { t } = useTranslation()
-	const service = servicesData.find(s => s.id === parseInt(serviceId))
+	const { serviceId } = useParams<{ serviceId?: string }>()
+	// Явно указываем тип для service — может быть Service или undefined
+	const service = serviceId
+		? servicesData.find(s => s.id === parseInt(serviceId, 10))
+		: undefined
 
 	if (!service) {
 		return (
@@ -123,11 +137,13 @@ function ServiceDetail() {
 								color: 'white',
 								boxShadow: '0 4px 6px rgba(216, 71, 142, 0.3)',
 							}}
-							onMouseOver={e => {
-								e.target.style.boxShadow = '0 6px 8px rgba(216, 71, 142, 0.4)'
+							onMouseOver={(e: React.MouseEvent<HTMLButtonElement>) => {
+								const element = e.currentTarget
+								element.style.boxShadow = '0 6px 8px rgba(216, 71, 142, 0.4)'
 							}}
-							onMouseOut={e => {
-								e.target.style.boxShadow = '0 4px 6px rgba(216, 71, 142, 0.3)'
+							onMouseOut={(e: React.MouseEvent<HTMLButtonElement>) => {
+								const element = e.currentTarget
+								element.style.boxShadow = '0 4px 6px rgba(216, 71, 142, 0.3)'
 							}}
 						>
 							Записаться на услугу
