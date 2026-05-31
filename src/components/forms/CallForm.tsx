@@ -1,8 +1,18 @@
 import { useState } from 'react'
 import * as emailjs from '@emailjs/browser'
 
-function CallForm({ onClose }) {
-	const [formData, setFormData] = useState({
+interface CallFormProps {
+	onClose: () => void
+}
+
+interface FormData {
+	name: string
+	phone: string
+	time: string
+}
+
+function CallForm({ onClose }: CallFormProps) {
+	const [formData, setFormData] = useState<FormData>({
 		name: '',
 		phone: '',
 		time: new Date().toLocaleString('ru-RU'), // Добавляем время отправки
@@ -15,7 +25,7 @@ function CallForm({ onClose }) {
 	const TEMPLATE_ID = 'template_gpqcky8'
 	const PUBLIC_KEY = 'ulGiv5apnpYmr70XB' // Замените на актуальный Public Key
 
-	const handleChange = e => {
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target
 		setFormData(prev => ({
 			...prev,
@@ -23,7 +33,7 @@ function CallForm({ onClose }) {
 		}))
 	}
 
-	const validateForm = () => {
+	const validateForm = (): boolean => {
 		setMessage('') // Очищаем предыдущее сообщение
 
 		if (!formData.name.trim()) {
@@ -43,7 +53,7 @@ function CallForm({ onClose }) {
 		return true
 	}
 
-	const handleSubmit = e => {
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 
 		if (isSending) return // Блокируем повторную отправку

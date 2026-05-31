@@ -6,8 +6,10 @@ import CallForm from '../forms/CallForm'
 import EmailForm from '../forms/EmailForm'
 import ReviewForm from '../forms/ReviewForm'
 
+type ActiveFormType = 'call' | 'email' | 'chat' | null
+
 function BookingForm() {
-	const [activeForm, setActiveForm] = useState(null)
+	const [activeForm, setActiveForm] = useState<ActiveFormType>(null)
 
 	const closeForm = () => setActiveForm(null)
 
@@ -18,7 +20,7 @@ function BookingForm() {
 				className={`
           flex flex-col justify-center gap-5 h-50 z-30 w-15 items-center
           fixed top-1/2 right-0
-           duration-700 ease-in-out
+          duration-700 ease-in-out
           ${activeForm ? '-translate-x-95 ' : 'translate-x-0  '}
           bg-red-100 rounded-l-lg
         `}
