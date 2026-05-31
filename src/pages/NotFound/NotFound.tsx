@@ -1,12 +1,24 @@
-// NotFoundPage.jsx
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
+interface BenefitItem {
+	text: string
+}
+
 const NotFoundPage = () => {
 	const { t } = useTranslation()
 
-	const benefits = t('notFound.benefits', { returnObjects: true })
+	// Явно задаём тип для benefits. Предполагаем, что это массив строк.
+	// Если в переводах используется объект с полем text, скорректируйте тип и логику ниже.
+	const benefits: string[] | string = t('notFound.benefits', {
+		returnObjects: true,
+	})
+
+	// Проверяем, что benefits — это массив, если нет — создаём массив с одним элементом
+	const benefitsArray: string[] = Array.isArray(benefits)
+		? benefits
+		: [benefits]
 
 	return (
 		<div className='min-h-screen bg-gradient-to-r from-pink-50 to-purple-100 flex flex-col items-center justify-center px-4 py-8'>
@@ -31,7 +43,7 @@ const NotFoundPage = () => {
 						{t('notFound.weHave')}
 					</h3>
 					<ul className='space-y-2'>
-						{benefits.map((benefit, index) => (
+						{benefitsArray.map((benefit: string, index: number) => (
 							<li key={index} className='flex items-center text-gray-600'>
 								<span
 									className={`w-2 h-2 rounded-full mr-3 ${

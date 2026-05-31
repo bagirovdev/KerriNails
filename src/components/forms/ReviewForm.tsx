@@ -1,4 +1,8 @@
-function ReviewForm({ onClose }) {
+interface ReviewFormProps {
+	onClose: () => void
+}
+
+function ReviewForm({ onClose }: ReviewFormProps) {
 	return (
 		<form className='p-6 bg-white rounded-xl shadow-2xl w-1/2 h-full fixed right-0 top-0 flex flex-col'>
 			<button
