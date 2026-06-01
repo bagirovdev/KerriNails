@@ -14,7 +14,7 @@ function BookingForm() {
 	const closeForm = (): void => setActiveForm(null)
 
 	return (
-		<div className='fixed right-0 z-10 top-0 bottom-0 w-full'>
+		<div className='fixed right-0 z-40 top-0 bottom-0 w-0 h-0'>
 			{/* Панель иконок — всегда видна */}
 			<div
 				className={`

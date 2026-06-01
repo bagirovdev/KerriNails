@@ -10,6 +10,8 @@
 .clip-trapezoid {
 	clip-path: polygon(0 0, 100% 0, 50% 100%, 0 100%);
 }
+
+/* for prices start*/
 @keyframes fadeInUp {
 	from {
 		opacity: 0;
@@ -31,7 +33,6 @@
 		transform: scale(1);
 	}
 }
-
 .animate-fadeInUp {
 	animation: fadeInUp 0.8s ease-out forwards;
 }
@@ -39,3 +40,15 @@
 .animate-fadeInScale {
 	animation: fadeInScale 0.6s ease-in-out forwards;
 }
+/* for prices end */
+
+/* for buttons start */
+@keyframes shimmer {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(200%);
+	}
+}
+/* for buttons end */
