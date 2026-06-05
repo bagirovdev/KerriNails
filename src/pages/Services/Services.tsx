@@ -17,7 +17,7 @@ function Services() {
 			aboutButton: 'Подробнее',
 		},
 		{
-			id: 2,
+			id: 7,
 			img: logo,
 			alt: 'Педикюр с покрытием',
 			title: 'Педикюр с покрытием',

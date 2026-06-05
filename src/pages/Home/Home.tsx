@@ -4,7 +4,7 @@ import Services from '../Services/Services'
 
 function Home() {
 	return (
-		<div className='mt-20'>
+		<div className='mt-20  '>
 			<BookingForm />
 			<Carousel />
 			<Services />

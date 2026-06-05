@@ -5,16 +5,18 @@ import { useState } from 'react'
 import CallForm from '../forms/CallForm'
 import EmailForm from '../forms/EmailForm'
 import ReviewForm from '../forms/ReviewForm'
+import { useNavbar } from '../../Context/NavbarContext'
 
 type ActiveFormType = 'call' | 'email' | 'chat' | null
-
 function BookingForm() {
 	const [activeForm, setActiveForm] = useState<ActiveFormType>(null)
-
+	const { isNavbarOpen } = useNavbar()
 	const closeForm = (): void => setActiveForm(null)
 
 	return (
-		<div className='fixed right-0 z-40 top-0 bottom-0 w-0 h-0'>
+		<div
+			className={`${isNavbarOpen ? 'hidden' : 'fixed right-0 z-40 top-0 bottom-0 w-0 h-0'}`}
+		>
 			{/* Панель иконок — всегда видна */}
 			<div
 				className={`
