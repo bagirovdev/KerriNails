@@ -13,75 +13,78 @@ import Prices from './pages/Prices/Prices'
 import LandingPage from './pages/Landing/LandingPage'
 import Layout from './components/Layout/Layout'
 import ServiceDetail from './pages/Services/ServiceDetail'
+import { NavbarProvider } from './Context/NavbarProvider'
 
 function App() {
 	return (
 		<I18nextProvider i18n={i18n}>
-			<Router>
-				<main>
-					<Routes>
-						<Route path='/' element={<LandingPage />} />
-						<Route
-							path='/services'
-							element={
-								<Layout>
-									<Services />
-								</Layout>
-							}
-						/>
-						<Route
-							path='/home'
-							element={
-								<Layout>
-									<Home />
-								</Layout>
-							}
-						/>
-						<Route path='/service/:serviceId' element={<ServiceDetail />} />
-						<Route
-							path='/portfolio'
-							element={
-								<Layout>
-									<Portfolio />
-								</Layout>
-							}
-						/>
-						<Route
-							path='/reviews'
-							element={
-								<Layout>
-									<Reviews />
-								</Layout>
-							}
-						/>
-						<Route
-							path='/contact'
-							element={
-								<Layout>
-									<Contact />
-								</Layout>
-							}
-						/>
-						<Route
-							path='/prices'
-							element={
-								<Layout>
-									<Prices />
-								</Layout>
-							}
-						/>
-						<Route
-							path='/discount'
-							element={
-								<Layout>
-									<Discount />
-								</Layout>
-							}
-						/>
-						<Route path='*' element={<NotFound />} />
-					</Routes>
-				</main>
-			</Router>
+			<NavbarProvider>
+				<Router>
+					<main>
+						<Routes>
+							<Route path='/' element={<LandingPage />} />
+							<Route
+								path='/services'
+								element={
+									<Layout>
+										<Services />
+									</Layout>
+								}
+							/>
+							<Route
+								path='/home'
+								element={
+									<Layout>
+										<Home />
+									</Layout>
+								}
+							/>
+							<Route path='/service/:serviceId' element={<ServiceDetail />} />
+							<Route
+								path='/portfolio'
+								element={
+									<Layout>
+										<Portfolio />
+									</Layout>
+								}
+							/>
+							<Route
+								path='/reviews'
+								element={
+									<Layout>
+										<Reviews />
+									</Layout>
+								}
+							/>
+							<Route
+								path='/contact'
+								element={
+									<Layout>
+										<Contact />
+									</Layout>
+								}
+							/>
+							<Route
+								path='/prices'
+								element={
+									<Layout>
+										<Prices />
+									</Layout>
+								}
+							/>
+							<Route
+								path='/discount'
+								element={
+									<Layout>
+										<Discount />
+									</Layout>
+								}
+							/>
+							<Route path='*' element={<NotFound />} />
+						</Routes>
+					</main>
+				</Router>
+			</NavbarProvider>
 		</I18nextProvider>
 	)
 }

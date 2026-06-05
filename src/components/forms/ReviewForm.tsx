@@ -8,6 +8,7 @@ function ReviewForm({ onClose }: ReviewFormProps) {
 			<button
 				onClick={onClose}
 				className='float-right text-3xl cursor-pointer text-gray-500 mt-20 ml-auto'
+				type='button' // Явно указываем тип кнопки, чтобы она не отправляла форму
 			>
 				×
 			</button>
@@ -15,7 +16,9 @@ function ReviewForm({ onClose }: ReviewFormProps) {
 			<div className='flex-grow flex flex-col justify-center'>
 				<h3 className='text-xl font-bold mb-4'>Заказать звонок</h3>
 				<p>Представьтесь, и мы вам перезвоним</p>
-				<form className='mt-4'>
+				<div className='mt-4'>
+					{' '}
+					{/* Заменили <form> на <div> */}
 					<input
 						type='text'
 						placeholder='Имя'
@@ -32,7 +35,7 @@ function ReviewForm({ onClose }: ReviewFormProps) {
 					>
 						Отправить
 					</button>
-				</form>
+				</div>
 			</div>
 		</form>
 	)
